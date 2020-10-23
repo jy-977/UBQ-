@@ -46,14 +46,14 @@ Github with the organization of the "Chemical plant" project
 | Sprint  | Date           |Task                                     | PIC     | Effort Point | status   |
 |:--------|:---------------|:----------------------------------------|:--------|:-------------|----------|
 | 1       |                | Acquire basic knowledge of the components and protoboard   | All     | 3            | Done     |
-| 1       |                | Prepare the IDE - Arduino & ESP-01      | All     | 4            | 80%      |
-| 1       |                | Prepare the IDE - R.Pi + ChibiOS        | All     | 3            | 30%      |
-| 2       |8 Oct - 22 Oct  | Prepare the IDE - R.Pi + ChibiOS        | All     | 3            |          |
-| 2       |8 Oct - 22 Oct  | Define the checking/test process        | Danillo | 5            |          |
-| 2       |8 Oct - 22 Oct  | ESP-01 <-> Arduino interaction          | Danillo | 3            |          |
-| 2       |8 Oct - 22 Oct  | Data Producer 1 development             | Yoon    | 4            |          |
-| 2       |8 Oct - 22 Oct  | Data Producer 2 developmen              | Ron     | 4            |          |
-| 2       |8 Oct - 22 Oct  | Presentation                            | Yoon    | 2            |          |
+| 1       |                | Prepare the IDE - Arduino & ESP-01      | All     | 4            | Done      |
+| 1       |                | Prepare the IDE - R.Pi + ChibiOS        | All     | 3            | Done      |
+| 2       |8 Oct - 22 Oct  | Prepare the IDE - R.Pi + ChibiOS        | All     | 3            | Done      |
+| 2       |8 Oct - 22 Oct  | Define the checking/test process        | Danillo | 5            | 80%       |
+| 2       |8 Oct - 22 Oct  | ESP-01 <-> Arduino interaction          | Danillo | 3            | Done      |
+| 2       |8 Oct - 22 Oct  | Data Producer 1 development             | Yoon    | 4            | Done      |
+| 2       |8 Oct - 22 Oct  | Data Producer 2 developmen              | Ron     | 4            | Done      |
+| 2       |8 Oct - 22 Oct  | Presentation                            | Yoon    | 2            | Done     |
 | 3       |22 Oct - 5 Nov  | How to -> LCD Screen                    | Ron     | 2            |          |
 | 3       |22 Oct - 5 Nov  | How to -> I2C protocol                  | Yoon,Danillo| 8        |          |
 | 3       |22 Oct - 5 Nov  | How to -> PCF 8754                      | Ron     | 4            |          |
