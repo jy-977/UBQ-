@@ -18,6 +18,8 @@ Github with the organization of the "Chemical plant" project
 
 /temporary/
 
+[i2c and Arduino communication](https://docs.google.com/document/d/1OWQSHJBVmmNQFRa5eNo5aNUqJwkiWuYWsd_G0PcyDhE/edit?usp=sharing)
+
 [Testeing Process](https://docs.google.com/document/d/1rYng7ZAfKkQWMzzW2gNpg0PrSBuMqa_gaKj0070n3JU/edit?usp=sharing)
 
 [ESP8266-Arduino integration](https://docs.google.com/document/d/145nEAQ6OzmFDgDNN_ZL_prDqMBe_FcL9k26iuRbqJek/edit?usp=sharing)
