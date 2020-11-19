@@ -66,7 +66,7 @@ Github with the organization of the "Chemical plant" project
 | 3       |22 Oct - 5 Nov  | R.Pi <-> Arduino interaction            | Yoon,Danillo| 9        | Done         |
 | 3       |22 Oct - 5 Nov  | Presentation                            | Danillo | 2            | Done         |
 | 4       |5 Nov - 19 Nov  | Data log and Screen representation      | Yoon    | 3            | Done         |
-| 4       |5 Nov - 19 Nov  | Ultrasonic <-> Led bar representation   | Yoon    | 5            | In progress         |
+| 4       |5 Nov - 19 Nov  | Ultrasonic <-> Led bar representation   | Yoon    | 5            | Done         |
 | 4       |5 Nov - 19 Nov  | Presentation                            | Ron     | 2            | Done         |
 
 
