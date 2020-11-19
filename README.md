@@ -55,7 +55,7 @@ Github with the organization of the "Chemical plant" project
 | 1       |                | Prepare the IDE - Arduino & ESP-01      | All     | 4            | Done      |
 | 1       |                | Prepare the IDE - R.Pi + ChibiOS        | All     | 3            | Done      |
 | 2       |8 Oct - 22 Oct  | Prepare the IDE - R.Pi + ChibiOS        | All     | 3            | Done      |
-| 2       |8 Oct - 22 Oct  | Define the checking/test process        | Danillo | 5            | 80%       |
+| 2       |8 Oct - 22 Oct  | Define the checking/test process        | Danillo | 5            | Done       |
 | 2       |8 Oct - 22 Oct  | ESP-01 <-> Arduino interaction          | Danillo | 3            | Done      |
 | 2       |8 Oct - 22 Oct  | Data Producer 1 development             | Yoon    | 4            | Done      |
 | 2       |8 Oct - 22 Oct  | Data Producer 2 developmen              | Ron     | 4            | Done      |
