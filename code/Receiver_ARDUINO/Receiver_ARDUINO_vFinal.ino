@@ -17,23 +17,23 @@ float floatTemp = 0.0;
 float floatHum = 0.0;
 float floatDistance = 0.0;
 float floatTime = 0.0;
-char distanceBuffer[7];
-char tempBuffer[7];
-char humBuffer[7];
 int sensorData[3];
+volatile int lastTemp = 1;
+volatile int lastHum = 1;
+volatile int lastDistance = 1;
 
 boolean newData = false;
 
 void setup() {
   // put your setup code here, to run once:
-  Wire.begin(I2C_ADDR);
-
   // Serial communication with the ESP-01
-  Serial.begin(115200);
+  Serial.begin(9600);
   mySerial.begin(115200);
 
+  Wire.begin(I2C_ADDR);
+
   Wire.onRequest(sendData_handler);
-  delay(5000);
+  delay(1000);
 }
 
 // Data received from the Data Receiver ESP-01 are: <String,float, float, float, float>
@@ -45,9 +45,10 @@ void loop() {
             // this temporary copy is necessary to protect the original data
             //   because strtok() used in parseData() replaces the commas with \0
         parseData();
-        showParsedData();
+        //showParsedData();
         newData = false;
     }
+    delay(500);
 }
 
 //============
@@ -107,6 +108,17 @@ void parseData() {      // split the data into its parts
     strtokIndx = strtok(NULL, ",");
     floatHum = atof(strtokIndx);     // convert this part to a float
 
+    if (floatTemp > 0.0 && floatTemp < 100.0) {
+      lastTemp = int(floatTemp);
+    }
+    
+    if (floatHum > 0.0 && floatHum < 150.0) {
+      lastHum = int(floatHum);
+    } 
+    
+    if (floatDistance > 0.0 && floatDistance < 1000.0) {
+      lastDistance = int(floatDistance); 
+    }
 }
 
 //============
@@ -117,25 +129,22 @@ void showParsedData() {
     Serial.print("Message: ");
     Serial.println(message);
     Serial.print("Distance (HC-SR04): ");
-    Serial.println(floatDistance);
+    Serial.println(lastDistance);
     Serial.print("Time (HC-SR04): ");
     Serial.println(floatTime);
     Serial.print("Temperature (DHT11): ");
-    Serial.println(floatTemp);
+    Serial.println(lastTemp);
     Serial.print("Humidity (DHT11): ");
-    Serial.println(floatHum);
+    Serial.println(lastHum);
 }
 
 void sendData_handler (){
-  sensorData[0] = int(floatTemp);
-  sensorData[1] = int(floatHum);
-  sensorData[2] = int(floatDistance); 
 
-  for (int i=0; i<3; i++) {
-    Wire.write(sensorData[i]);  //data bytes are queued in local buffer
-  }
-  //Wire.endTransmission();
+  sensorData[0] = lastTemp;
+  sensorData[1] = lastHum;
+  sensorData[2] = lastDistance;
   
-  delay(100);
- 
+  for (int i=0; i<3; i++) {
+      Wire.write(sensorData[i]);  //data bytes are queued in local buffer
+  }
 }

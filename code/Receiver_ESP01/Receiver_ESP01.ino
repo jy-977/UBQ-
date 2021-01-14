@@ -20,12 +20,12 @@ struct_message board2;
 struct_message boardsStruct[2] = {board1, board2};
 
 unsigned long lastTime = 0;
-unsigned long timerDelay = 10000;
+unsigned long timerDelay = 2000;
 
-float board1Distance = 0.0;
-float board1Time = 0.0;
-float board2Temp = 0.0;
-float board2Hum = 0.0;
+int board1Distance = 0;
+int board1Time = 0;
+int board2Temp = 0;
+int board2Hum = 0;
 
 // Callback function that will be executed when data is received
 void OnDataRecv(uint8_t * mac_addr, uint8_t *incomingData, uint8_t len) {
@@ -40,9 +40,22 @@ void OnDataRecv(uint8_t * mac_addr, uint8_t *incomingData, uint8_t len) {
   boardsStruct[myData.id-1].x = myData.x;
   boardsStruct[myData.id-1].y = myData.y;
   boardsStruct[myData.id-1].id = myData.id;
-  //Serial.printf("x value: %f \n", boardsStruct[myData.id-1].x);
-  //Serial.printf("y value: %f \n", boardsStruct[myData.id-1].y);
-  //Serial.println();
+
+  board1Distance = int(boardsStruct[0].x);
+  board1Time = int(boardsStruct[0].y);
+  board2Temp = int(boardsStruct[1].x);
+  board2Hum = int(boardsStruct[1].y);
+
+  // send data to arduino
+  Serial.print("<Data,");
+  Serial.print(board1Distance);
+  Serial.print(",");
+  Serial.print(board1Time);
+  Serial.print(",");
+  Serial.print(board2Temp);
+  Serial.print(",");
+  Serial.print(board2Hum);
+  Serial.print(">");
 }
  
 void setup() {
@@ -66,27 +79,4 @@ void setup() {
 }
 
 void loop(){
-   // loop
-  if ((millis() - lastTime) > timerDelay) {
-    // Access the variables for each board
-
-    board1Distance = boardsStruct[0].x;
-    board1Time = boardsStruct[0].y;
-    
-    board2Temp = boardsStruct[1].x;
-    board2Hum = boardsStruct[1].y;
-    
-    // Send the information to the arduino.
-    Serial.print("<Data,");
-    Serial.print(board1Distance);
-    Serial.print(",");
-    Serial.print(board1Time);
-    Serial.print(",");
-    Serial.print(board2Temp);
-    Serial.print(",");
-    Serial.print(board2Hum);
-    Serial.print(">");
-
-    lastTime = millis();
-  }
 }

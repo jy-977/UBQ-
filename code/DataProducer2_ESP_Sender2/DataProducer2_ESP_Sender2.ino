@@ -23,6 +23,8 @@ DHT dht(DHTPin, DHTTYPE);
 
 float Temperature;
 float Humidity;
+float lastTemp = 0.0;
+float lastHum = 0.0;
 
 // Set your Board ID (ESP32 Sender #1 = BOARD_ID 1, ESP32 Sender #2 = BOARD_ID 2, etc)
 #define BOARD_ID 2
@@ -39,7 +41,7 @@ typedef struct struct_message {
 struct_message myData;
 
 unsigned long lastTime = 0;
-unsigned long timerDelay = 10000;
+unsigned long timerDelay = 3000;
 
 // Callback when data is sent
 void OnDataSent(uint8_t *mac_addr, uint8_t sendStatus) {
@@ -81,17 +83,20 @@ void setup() {
 }
  
 void loop() {
-  if ((millis() - lastTime) > timerDelay) {
-    Temperature = dht.readTemperature(); // Gets the values of the temperature
-    Humidity = dht.readHumidity(); // Gets the values of the humidity
+  Temperature = dht.readTemperature(); // Gets the values of the temperature
+  Humidity = dht.readHumidity();
+  
+  if (Temperature != lastTemp && Humidity != lastHum ) {
+    lastTemp = Temperature;
+    lastHum = Humidity;
     
     // Set values to send
     myData.id = BOARD_ID;
-    myData.x = Temperature;
-    myData.y = Humidity;
+    myData.x = lastTemp;
+    myData.y = lastHum;
 
     // Send message via ESP-NOW
     esp_now_send(0, (uint8_t *) &myData, sizeof(myData));
-    lastTime = millis();
   }
+  delay(2000);
 }
