@@ -108,7 +108,7 @@ void parseData() {      // split the data into its parts
     strtokIndx = strtok(NULL, ",");
     floatHum = atof(strtokIndx);     // convert this part to a float
 
-    if (floatTemp > 0.0 && floatTemp < 100.0) {
+    if (floatTemp > 7 && floatTemp < 100.0) {
       lastTemp = int(floatTemp);
     }
     
